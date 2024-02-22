@@ -1,0 +1,84 @@
+#version: '3.1'
+#services:
+#  mysql-db-service:
+#    image: mysql:latest
+#    container_name:  mysql-db-service-container
+#    networks:
+#      - to-do-network
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_USERNAME: root
+#      MYSQL_PASSWORD: root
+#      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+#
+#
+#  mongodb-db-service:
+#    image: mongo:latest
+#    container_name: mongodb-db-service-container
+#    networks:
+#      - to-do-network
+#    ports:
+#      - "27017:27017"
+#
+#  user-auth-service:
+#    container_name: user-auth-service-container
+#    build: UserAuthService/
+#    networks:
+#      - to-do-network
+#    ports:
+#      - "8084:8084"
+#    depends_on:
+#      - api-gateway-service
+#      - eureka-service
+#      - mysql-db-service
+#    restart: always
+#
+#  todo-service:
+#    container_name: todo-service-container
+#    build: ToDoService/
+#    networks:
+#      - to-do-network
+#    ports:
+#      - "8096:8096"
+#    depends_on:
+#      - api-gateway-service
+#      - eureka-service
+#      - mongodb-db-service
+#    restart: always
+#
+#  notification-service:
+#    container_name: notification-service-container
+#    build: NotificationService/
+#    networks:
+#      - to-do-network
+#    ports:
+#      - "8086:8086"
+#    depends_on:
+#      - api-gateway-service
+#      - eureka-service
+#      - mongodb-db-service
+#    restart: always
+#
+#  api-gateway-service:
+#    container_name: api-gateway-service-container
+#    build: ApiGateway/
+#    networks:
+#      - to-do-network
+#    ports:
+#      - "9005:9005"
+#
+#  eureka-service:
+#    container_name: eureka-service-container
+#    build: EurekaServer/
+#    networks:
+#      - to-do-network
+#    ports:
+#      - "8761:8761"
+#networks:
+#  to-do-network:
+#    driver: bridge
+#
+#
+#

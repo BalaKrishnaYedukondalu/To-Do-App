@@ -1,0 +1,88 @@
+<div class="formbg">
+  <div class="info">
+    <a routerLink="/info">
+      <img
+        id="appicon"
+        src="../../assets/images/robot-to-do.png"
+        alt=" no img."
+    /></a>
+    <a routerLink="/login">
+      <h1>Task Navigator</h1>
+    </a>
+  </div>
+  <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" id="formm">
+    <div style="display: flex; margin-left: 230px">
+      <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title class="title">Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="col">
+            <div class="row">
+              <mat-form-field class="full-width">
+                <mat-icon matPrefix class="my-icon">email</mat-icon>
+                <input
+                  class="strong"
+                  matInput
+                  placeholder="Enter Email Id"
+                  formControlName="emailId"
+                  type="email"
+                />
+                <mat-error
+                  *ngIf="loginForm.controls['emailId'].hasError('required')"
+                >
+                  <strong>Email Id is Required</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="loginForm.controls['emailId'].hasError('email')"
+                >
+                  <strong> Please Enter Valid Mail ID</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="full-width">
+                <mat-icon matPrefix class="my-icon">password</mat-icon>
+                <input
+                  class="strong"
+                  matInput
+                  placeholder="Enter Password"
+                  formControlName="password"
+                  type="password"
+                />
+                <mat-error
+                  *ngIf="loginForm.controls['password'].hasError('required')"
+                >
+                  <strong>Password is Required</strong>
+                </mat-error>
+                <mat-error
+                  *ngIf="loginForm.controls['password'].hasError('minlength')"
+                >
+                  <strong> Password length should be 8</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions id="bottom">
+          <button
+            class="button"
+            mat-raised-button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            style="color: black; font-weight: bolder"
+          >
+            Submit
+          </button>
+          <span class="noacc"
+            >Don't have an account ?<a id="register" routerLink="/register">
+              Register
+            </a></span
+          >
+        </mat-card-actions>
+      </mat-card>
+
+ 
+    </div>
+  </form>
+</div>

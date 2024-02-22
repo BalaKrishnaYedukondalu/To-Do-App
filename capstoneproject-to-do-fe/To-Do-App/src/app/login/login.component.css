@@ -1,0 +1,242 @@
+.full-width {
+  width: 100%;
+  /* height: 100%; */
+  /* font-family: "Poppins" , sans-serif; */
+}
+
+.formbg {
+  /* background: rgb(58, 105, 96); */
+  /* background: linear-gradient(
+    137deg,
+    rgba(58, 105, 96, 0.9528186274509804) 0%,
+    rgba(0, 0, 0, 1) 100%
+  ); */
+  /* background-image: url(../../assets/images/hd-bg-photo-city.avif); */
+  /* padding-bottom: 100px; */
+  background-image: url("../../assets/images/yello-bg-photo.avif");
+  background-size: cover;
+  margin-top: -160px;
+  margin-top: -2px;
+  padding: 20px;
+  padding: 35px;
+}
+
+.shipping-card {
+  width: 400px;
+  margin: 130px auto;
+  margin-top: 50px;
+  margin-left: 420px;
+  /* justify-content: center; */
+  /* align-content: center; */
+  /* background-color: white; */
+  /* background-color: transparent; */
+  border: 1px dotted snow;
+  box-shadow: 0px 0px 10px 0px #8c0b79, 0 1px 1px 0 #36042f, 0 1px 3px 0 #451c3f;
+
+  background-color: rgba(250, 201, 8, 0.982);
+  box-shadow: 1px 2px 3px 4px rgba(6, 6, 5, 0.4);
+}
+
+.mat-radio-button {
+  display: block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.material-icons:hover {
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.header {
+  padding-left: 40%;
+  padding-top: 30px;
+}
+
+.button {
+  margin-left: 7px;
+  font-family: "Roboto Slab", serif;
+}
+
+#formm {
+  /* border: 2px solid white; */
+  display: flex;
+}
+.info {
+  display: flex;
+  margin-top: 10px;
+}
+
+#appicon {
+  width: 100px;
+  height: 100px;
+  margin-left: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  /* margin-top: 10px; */
+  padding-left: 20px;
+  font-size: 40px;
+  /* background: -webkit-linear-gradient(#ffffff, #1d9ca5); */
+  background: #f9f9f9;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 37px;
+}
+
+#bottom {
+  display: grid;
+}
+
+.noacc {
+  margin-left: 50px;
+  font-weight: 25px;
+  margin-top: 15px;
+  font-weight: bolder;
+  color: #000;
+}
+
+#register {
+  color: black;
+  text-decoration: none;
+}
+
+#register:hover {
+  color: red;
+}
+
+.lprog {
+  width: 500px;
+  height: 500px;
+}
+
+h5 {
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 50px;
+  margin-top: 30px;
+  color: black;
+}
+
+h5:hover {
+  color: white;
+}
+
+mat-form-field {
+  font-size: 120%;
+}
+
+.button {
+  font-size: 100%;
+}
+
+.title {
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgba(252, 252, 252, 0.953);
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.input {
+  background-color: #ffffff;
+}
+
+.frontImg {
+  width: 400px;
+  margin: 130px auto;
+  margin-top: 50px;
+  justify-content: center;
+  /* background-color: white; */
+  /* background-color: transparent; */
+}
+
+mat-error {
+  color: rgba(198, 27, 27, 0.953);
+  font-size: 15px;
+}
+
+mat-icon {
+  color: antiquewhite;
+}
+
+.mat-icon:hover {
+  background-color: transparent;
+}
+
+#formm:valid .button {
+  
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  text-align: center;
+  border: 0;
+  padding: 7px 16px;
+  min-height: 36px;
+  min-width: 36px;
+  color: #ffffff;
+  background: linear-gradient(
+    137deg,
+    #f0440b 0%,
+    rgb(231, 76, 4) 50%,
+    #f95401 100%
+  );
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset;
+}
+
+footer {
+  background-color: #e1dcb0ad;
+  padding: 20px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-media a {
+  color: #555;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.social-media a:hover {
+  color: #000;
+}
+
+.fa-facebook,
+.fa-twitter,
+.fa-instagram {
+  transition: color 0.3s ease;
+}
+
+.copyright {
+  color: black;
+  font-size: 17px;
+}

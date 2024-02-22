@@ -1,0 +1,136 @@
+<mat-drawer-container class="sidebar-container" id="main-image" autosize>
+  <mat-drawer #drawer class="sidebar-sidenav" id="sidebar_sidenav" mode="side">
+    <p class="whiteText">MENU</p>
+    <div style="padding: 10px">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="sideNavMenu">
+      <a routerLiank="/home/header"></a>
+      <button mat-button class="customMenuBtn" (click)="home()">🏠Home</button>
+      <button mat-button class="customMenuBtn" (click)="complete()">
+        ✅Completed
+      </button>
+      <button mat-button class="customMenuBtn" (click)="important()">
+        <img
+          style="width: 25px; width: 25px"
+          src="../../assets/images/category-icon2.png"
+          alt=""
+        />Important
+      </button>
+      <button mat-button class="customMenuBtn" (click)="archive()">
+        📥Archive
+      </button>
+      <button mat-button class="customMenuBtn" (click)="Personal()">
+        💻Personal
+      </button>
+      <button mat-button class="customMenuBtn" (click)="Travel()">
+        🧳Travel
+      </button>
+
+      <!-- <button mat-button class="customMenuBtn">Priority</button> -->
+    </div>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <div>
+      <div type="button" mat-button (click)="drawer.toggle(); animateButton()">
+        <div
+          class="hamburger"
+          id="hamburger-1"
+          [ngClass]="isOpen ? 'is-active' : ''"
+        >
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="addtask" style="border-radius: 10px">
+        <app-searchtodo
+          class="ser"
+          (sendToContainer)="search($event)"
+          (sendToContainer1)="filter($event)"
+          (sendToContainer2)="completionStatus($event)"
+        ></app-searchtodo>
+      </div>
+      <div class="bootstrap-wrapper">
+        <div class="container-fluid">
+          <h1>Available Personal</h1>
+          <div class="row mt2">
+            <div
+              class="col-md-4"
+              *ngFor="
+                let card of allToDO
+                  | paginate : { itemsPerPage: 8, currentPage: p }
+              "
+            >
+              <mat-card class="mt2">
+                <mat-card-header>
+                  <mat-card-subtitle class="subtitle">
+                    {{ card.title }}
+                  </mat-card-subtitle>
+                  <mat-card-title class="title" *ngIf="!card.completed">
+                    Created On :- {{ card.createdDateTime }} | Priority :-
+                    {{ card.priority }}<br />
+                    Due Date :-{{ card.dueDate }} | Status :- Pending
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <div>
+                  <mat-card-content>
+                    <p class="truncate">{{ card.description }}</p>
+                  </mat-card-content>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <mat-card-actions class="button">
+                  <button
+                    mat-button
+                    matTooltip="UnPersonal"
+                    class="menu-button"
+                    (click)="updateToDoAsPersonalTask(card)"
+                    color="accent"
+                  >
+                    <mat-icon style="color: rgb(255, 254, 254)"
+                      >person_pin</mat-icon
+                    >
+                  </button>
+ 
+                  <button
+                    mat-button
+                    matTooltip="Task Done"
+                    class="menu-button"
+                    color="warn"
+                    (click)="updateTaskAsCompletedTask(card)"
+                  >
+                    <mat-icon style="color: rgb(255, 254, 254)"
+                      >done_all</mat-icon
+                    >
+                  </button>
+                  <button
+                    mat-button
+                    matTooltip="Delete"
+                    class="menu-button"
+                    color="warn"
+                    (click)="deleteTaskById(card.title)"
+                  >
+                    <mat-icon style="color: rgb(255, 254, 254)"
+                      >delete</mat-icon
+                    >
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <footer>
+      <div class="clearfix">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </footer>
+  </div>
+</mat-drawer-container>

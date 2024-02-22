@@ -1,0 +1,86 @@
+<div class="row">
+  <div id="searchdiv">
+    <i id="searchicon" class="bi bi-search"></i>
+    <a routerLink="/home/header">
+      <button mat-button style="margin-left: -50px">
+        <mat-icon>home</mat-icon>
+      </button></a
+    >
+
+    <input
+      matInput
+      id="inputBar"
+      type="text"
+      placeholder="Search title"
+      [(ngModel)]="searchedTitle"
+      (input)="searchinput()"
+    />
+
+    <a
+      type="submit"
+      class="material-icons"
+      matTooltip="Reset"
+      matTooltipPosition="above"
+      (click)="cleardata()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </a>
+    <button
+      *ngIf="!showButton"
+      class="addTaskBtn"
+      id="addTaskBtn"
+      matTooltipPosition="above"
+      [matMenuTriggerFor]="menu"
+      mat-raised-button
+      color="primary"
+      aria-label="Example icon-button with a menu"
+    >
+      View by priority
+    </button>
+    <mat-menu #menu="matMenu">
+      <div class="dropdown">
+        <button mat-menu-item>Priority</button>
+        <div class="dropdown-content">
+          <button
+            mat-menu-item
+            [disabled]="selected === 'high🔴'"
+            (click)="selected = 'high🔴'; searchinput1()"
+          >
+            High 🔴
+          </button>
+          <button
+            mat-menu-item
+            [disabled]="selected === 'medium🟡'"
+            (click)="selected = 'medium🟡'; searchinput1()"
+          >
+            Medium 🟡
+          </button>
+          <button
+            mat-menu-item
+            [disabled]="selected === 'low🟢'"
+            (click)="selected = 'low🟢'; searchinput1()"
+          >
+            Low 🟢
+          </button>
+        </div>
+      </div>
+    </mat-menu>
+  </div>
+
+  <div class="addTask">
+    <ul class="menu">
+      <li>
+        <i class="fas fa-tasks"></i>
+        <span class="text" (click)="openDialog()">Add Task</span>
+      </li>
+      <li *ngIf="!showButton">
+        <i class="fas fa-trash"></i>
+        <span class="text" (click)="deleteAllToDo()">Delete All</span>
+      </li>
+      <li>
+        <i class="fas fa-archive"></i>
+        <span class="text" (click)="archive()">Archive</span>
+      </li>
+    </ul>
+  </div>
+</div>

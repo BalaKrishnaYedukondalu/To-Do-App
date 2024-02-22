@@ -1,0 +1,201 @@
+mat-toolbar {
+  /* background: rgb(58, 105, 96); */
+  /* background-color: rgb(255, 180, 4); */
+  background: linear-gradient(
+    137deg,
+    rgb(238, 109, 5) 0%,
+    #f4bc05 50%,
+    #f2e361 100%
+  );
+
+  color: white;
+  font-size: 20px;
+}
+
+.title {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 30px;
+  background-color: rgb(18, 2, 52);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.example-iconnotification {
+  text-decoration: none;
+  color: #ffffff;
+}
+.example-iconnotification:active {
+  color: #8b8b8b;
+}
+
+.title:hover {
+  color: green;
+}
+
+.content {
+  height: calc(100vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  /*   
+      display: flex;
+      justify-content: center;
+      align-items: center; */
+  font-size: 2rem;
+  color: lightgray;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+  .mat-icon {
+    margin-right: 8px;
+    color: white;
+  }
+}
+
+.menu-button:focus {
+  background-color: #8b8b8b;
+}
+
+.avatar {
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.name {
+  margin-top: 8px;
+  font-weight: normal;
+  color: white;
+}
+
+.designation {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: lightgrey;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+span {
+  color: white;
+  text-decoration: none;
+}
+
+img {
+  height: 60px;
+  width: 60px;
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: rgb(18, 2, 52);
+  border: 1px solid rgb(76, 4, 230);
+}
+
+.menu-button:active {
+  border: 1px solid rgb(18, 2, 52);
+}
+
+mat-button:active {
+  border: 1px solid rgb(18, 2, 52);
+}
+
+mat-elevation-z8 {
+  border: 5px solid black;
+}
+
+.example-iconnotification {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.example-iconnotification:active {
+  color: #6a9dee;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 10px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  /* float: right; */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  color: white;
+  font-family: "Lucida" Grande, sans-serif;
+  right: 0;
+  padding-top: 10px;
+  background: linear-gradient(
+    137deg,
+    rgb(147, 16, 16) 0%,
+    #ffb303 50%,
+    #cd8602 100%
+  );
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(99, 64, 31, 0.2);
+  z-index: 2;
+}
+
+.menu-buttons {
+  /* color: rgb(123, 8, 8); */
+  margin-left: 30px;
+  width: auto;
+}
+
+.log {
+  color: rgb(248, 245, 245);
+  margin-left: 20px;
+}
+
+.dropdown-content menu-buttons {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content menu-buttons:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.toDay {
+  margin-left: 137vh;
+}
+
+.name {
+  text-align: center;
+  text-transform: uppercase;
+}

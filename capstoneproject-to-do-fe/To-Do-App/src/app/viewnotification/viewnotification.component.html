@@ -1,0 +1,102 @@
+<mat-drawer-container class="sidebar-container" id="main-image" autosize>
+  <a routerLink="/home/header">
+    <button class="home" mat-button>
+      <mat-icon>home</mat-icon>
+    </button></a
+  >
+  <header>
+    <div class="bootstrap-wrapper">
+      <div class="container-fluid">
+        <h1
+          *ngIf="
+            !(this.notifications == null || this.notifications.length == 0)
+          "
+        >
+          Available Notification
+        </h1>
+        <h1
+          *ngIf="this.notifications == null || this.notifications.length == 0"
+        >
+          You have No Notification
+        </h1>
+        <div class="row mt2">
+          <div
+            class="col-md-4"
+            *ngFor="
+              let notification of notifications
+                | paginate : { itemsPerPage: 8, currentPage: p }
+            "
+          >
+            <mat-card
+              *ngIf="notification.notificationRead !== true"
+              class="card"
+              ngClass="{{
+                notification.notificationRead === false
+                  ? 'unreadNotification'
+                  : ''
+              }}"
+            >
+              <div
+                style="
+                  float: right;
+                  text-align: right;
+                  position: absolute;
+                  width: 100%;
+                  top: 5px;
+                  right: 5px;
+                "
+              >
+                <button
+                  mat-fab
+                  style="
+                    height: 30px;
+                    width: 30px;
+                    background: rgba(235, 235, 51, 0.5);
+                  "
+                  (click)="readNotification(notification)"
+                >
+                  <mat-icon class="delIcon" style="color: #333"
+                    >delete</mat-icon
+                  >
+                </button>
+              </div>
+              <mat-card-header>
+                <div
+                  mat-card-avatar
+                  style="margin-top: 20px"
+                  class="example-header-image"
+                ></div>
+                <mat-card-title class="text"
+                  ><b
+                    ><i>ToDo :- {{ notification.title }}</i></b
+                  ></mat-card-title
+                >
+                <mat-card-subtitle class="details">
+                  <h6>Created On :-</h6>
+                  <p>{{ notification.createdDateTime }}</p>
+                </mat-card-subtitle>
+                <mat-card-subtitle class="details1">
+                  <h6 style="color: green">Last Updated On :-</h6>
+                  <p>{{ notification.updatedTask }}</p>
+                </mat-card-subtitle>
+
+                <mat-card-header>
+                  <mat-card-subtitle class="details1">
+                    <h6 style="color: green">Due Days Remaining:</h6>
+                    <p>{{ getRemainingDays(notification.dueDate) }} days</p>
+                  </mat-card-subtitle>
+                </mat-card-header>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <footer>
+    <div class="clearfix">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </footer>
+</mat-drawer-container>

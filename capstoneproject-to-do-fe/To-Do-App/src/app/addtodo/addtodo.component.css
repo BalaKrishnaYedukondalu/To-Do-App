@@ -1,0 +1,75 @@
+.material-icons {
+  cursor: pointer;
+}
+
+.material-icons:hover {
+  border-radius: 10px;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 20px;
+}
+
+mat-form-field {
+  margin-left: 10px;
+  display: block;
+}
+
+textarea {
+  margin-bottom: -27px;
+}
+
+.date {
+  /* height: 20px; */
+  margin-left: 60px;
+  /* padding: 10px; */
+  border: 0px;
+}
+
+/* .date:hover {
+    border: 2px solid black;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 5s;
+  
+  } */
+
+.fullForm {
+  /* background-image: url(../../../assets/wood-.jpg);
+    background-size: cover; */
+  /* background-color: rgb(86, 49, 120); */
+  background: linear-gradient(
+    137deg,
+    #f4bc05 0%,
+    rgb(238, 109, 5) 50%,
+    #523b01 100%
+  );
+}
+
+mat-panel-title {
+  color: white;
+  font-size: 20px;
+  margin-left: 27%;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.text1 {
+  font-size: 17px;
+  color: white;
+}
+
+.button {
+  color: antiquewhite;
+  margin-left: 37%;
+  background-color: rgb(18, 2, 52);
+}

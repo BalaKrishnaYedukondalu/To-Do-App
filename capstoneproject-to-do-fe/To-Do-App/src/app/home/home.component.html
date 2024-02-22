@@ -1,0 +1,56 @@
+<mat-toolbar>
+  <div>
+    <img src="../../assets/images/robot-to-do.png" alt="not found" />
+  </div>
+  <a routerLink="header"> <span class="title">Task_Navigator</span></a>
+  <span class="example-spacer"></span>
+
+  <span class="toDay"></span>
+  <a routerLink="/home/todobydate">
+    <button
+      mat-icon-button
+      class="example-iconnotification"
+      matTooltip="Today Task"
+      aria-label="Example icon-button with heart icon"
+    >
+      <mat-icon> today </mat-icon>
+    </button>
+  </a>
+
+  <span class="example-spacer"></span>
+  <a style="margin-right: 10px" routerLink="/home/notification">
+    <button
+      mat-icon-button
+      class="example-iconnotification"
+      aria-label="Example icon-button with heart icon"
+      (click)="notification()"
+    >
+      <mat-icon>notifications_active</mat-icon>
+      <div
+        style="font-size: 10px"
+        *ngIf="!(allToDO.length == 0)"   matBadge="{{ totalLength }}" [matBadgeHidden]="badgevisible" ></div>
+    </button>
+  </a>
+
+  <div class="dropdown">
+    <img
+      [src]="loginService.getUser().profileImg"
+      style="height: 30px; width: 40px; border-radius: 20px"
+    />
+    <div class="dropdown-content">
+      <div class="name">{{ loginService.getUser().firstName }}</div>
+      <div>{{ loginService.getUser().emailId }}</div>
+      <button mat-raised-button class="menu-buttons" (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+        <span class="log">Logout</span>
+      </button>
+    </div>
+  </div>
+
+
+  
+</mat-toolbar>
+
+<div class="outlet">
+  <router-outlet></router-outlet>
+</div>

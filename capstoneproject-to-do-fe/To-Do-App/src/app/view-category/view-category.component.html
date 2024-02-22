@@ -1,0 +1,80 @@
+<mat-drawer-container class="sidebar-container" id="main-image" autosize>
+  <mat-drawer #drawer class="sidebar-sidenav" id="sidebar_sidenav" mode="side">
+    <p class="whiteText">MENU</p>
+    <div style="padding: 10px">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="sideNavMenu">
+      <a routerLink="/home/header"></a>
+      <button mat-button class="customMenuBtn" (click)="home()">🏠Home</button>
+      <button mat-button class="customMenuBtn" (click)="complete()">
+        ✅Completed
+      </button>
+      <button mat-button class="customMenuBtn" (click)="important()">
+        <img
+          style="width: 25px; width: 25px"
+          src="../../assets/images/category-icon2.png"
+          alt=""
+        />Important
+      </button>
+      <button mat-button class="customMenuBtn" (click)="archive()">
+        📥Archive
+      </button>
+      <button mat-button class="customMenuBtn" (click)="Personal()">
+        💻Personal
+      </button>
+      <button mat-button class="customMenuBtn" (click)="Travel()">
+        🧳Travel
+      </button>
+    </div>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <div>
+      <div type="button" mat-button (click)="drawer.toggle(); animateButton()">
+        <div
+          class="hamburger"
+          id="hamburger-1"
+          [ngClass]="isOpen ? 'is-active' : ''"
+        >
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+    <header class="header">
+      <div class="bootstrap-wrapper">
+        <div class="container-fluid">
+          <h1>All categories</h1>
+
+          <div *ngFor="let card of cards">
+            <mat-card class="mt2">
+              <mat-card-title>
+                <mat-icon mat-list-icon> category </mat-icon>
+                ⟫ {{ card.title }}</mat-card-title
+              >
+              <mat-card class="mdc-card" *ngFor="let item of card.toDoList">
+                <mat-card-header>
+                  <mat-card-subtitle class="subtitle">
+                    {{ item.title }}
+                  </mat-card-subtitle>
+                  <mat-card-title class="title">
+                    Created On :- {{ item.createdDateTime }} | Priority :-
+                    {{ item.priority }}<br />
+                    Due Date :-{{ item.dueDate }} |
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <div>
+                  <mat-card-content>
+                    <p class="truncate">{{ item.description }}</p>
+                  </mat-card-content>
+                </div>
+              </mat-card>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</mat-drawer-container>

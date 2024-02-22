@@ -1,0 +1,279 @@
+#inputBar {
+  /* width: 16vw; */
+  height: 2vw;
+  border: 1px;
+  border-radius: 0.5vw;
+  /* margin-left: 15px; */
+  box-shadow: inset #abacaf 0 0 0 2px;
+  border: 0;
+  background: white;
+  appearance: none;
+  width: 50%;
+  position: relative;
+  border-radius: 3px;
+  padding: 9px 12px;
+  line-height: 1.4;
+  border: 1px solid rgba(17, 94, 89, 1);
+  color: rgba(17, 94, 89, 1);
+  font-size: 16px;
+  font-weight: 400;
+  height: 40px;
+  transition: all 0.2s ease;
+  :hover {
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
+  }
+  :focus {
+    background: #fff;
+    outline: 0;
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 3px;
+  }
+}
+
+#searchdiv {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* border: 2px solid black; */
+  /* margin-top: 1%; */
+  /* margin-bottom: 2%; */
+  padding: 10px;
+  /* width: 45%; */
+  float: left;
+  width: 80%;
+  padding: 10px;
+  /* background-color:  rgb(108, 125, 173); */
+  /* margin-left: 500px;
+      border-radius: 0.9vw; */
+}
+
+.select {
+  margin-top: 20px;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+::placeholder {
+  padding-left: 10px;
+}
+
+.material-icons {
+  cursor: pointer;
+  color: rgb(18, 2, 52);
+  padding-left: 2px;
+  margin-left: 10px;
+}
+
+.material-icons:hover {
+  border-radius: 1px;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* align-self: center;
+  justify-content: center; */
+
+  /* margin-left: 300px; */
+  /* background-color: white; */
+  /* border: 2px solid black; */
+}
+
+.addTask {
+  /* float: left; */
+  width: 5%;
+  padding: 10px;
+  /* border: 2px solid red; */
+  align-self: center;
+  display: flex;
+}
+#addTaskBtn {
+  margin-left: 100px;
+  width: 200px;
+  color: rgb(221, 8, 8);
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: 0.3s;
+  border: 1px solid transparent;
+  /* letter-spacing: 2px; */
+  min-width: 120px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 14px 18px;
+  color: #fff;
+  background-color: #c4cfcf;
+  height: 48px;
+  :hover {
+    color: #d9caca;
+  }
+  background-color: rgb(18, 2, 52);
+}
+
+.addTaskBtn {
+  /* margin-left: 20px; */
+  width: 90px;
+  color: rgb(221, 8, 8);
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: 0.3s;
+  border: 1px solid transparent;
+  /* letter-spacing: 2px; */
+  min-width: 120px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 14px 18px;
+  color: #fff;
+  background-color: #c4cfcf;
+  height: 48px;
+  :hover {
+    color: #d9caca;
+  }
+  background-color: black;
+}
+
+.mDiv {
+  background-color: rgba(17, 94, 89, 1);
+  border: 2px solid red;
+}
+
+/*  */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  /* float: right; */
+}
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+  display: none;
+  /* margin-top: 5px; */
+  color: black;
+  right: 0;
+  padding-top: 10px;
+  background-color: grey;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  /* z-index: 1 */
+  /* float: left; */
+}
+
+/* Links inside the dropdown */
+
+.dropdown-content menu-buttons {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: grey;
+}
+
+mat-icon {
+  /* height: 50px;
+    width: 50px; */
+  /* font-size: larger; */
+  transform: scale(2.5);
+}
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content menu-buttons:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+ul {
+  position: relative;
+  display: flex;
+  gap: 28px;
+}
+
+ul li {
+  position: relative;
+  list-style: none;
+  width: 72px;
+  height: 50px;
+  border-radius: 72px;
+  background: rgb(18, 2, 52);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px #fff;
+  transition: 300ms;
+}
+
+ul li:hover {
+  width: 160px;
+  box-shadow: 0 0 0 2px var(--bg-color);
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  background: var(--bg-color);
+  opacity: 0;
+  transition: 300ms;
+}
+
+ul li:hover::before {
+  opacity: 1;
+}
+
+ul li span {
+  position: absolute;
+}
+
+ul li i {
+  color: #fff;
+  font-size: 2em;
+  transition: 300ms;
+  transition-delay: 150ms;
+}
+
+ul li:hover i {
+  transform: scale(0);
+  color: #fff;
+  transition-delay: 0s;
+}
+
+ul li .text {
+  color: #faf9f9;
+  font-size: 1.5em;
+  z-index: 1;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.024em;
+  opacity: 0;
+  transition: 300ms;
+  letter-spacing: -0.125px;
+}
+
+ul li:hover .text {
+  opacity: 1;
+}

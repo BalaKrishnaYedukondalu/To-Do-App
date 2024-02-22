@@ -1,0 +1,98 @@
+<mat-drawer-container class="sidebar-container" id="main-image" autosize>
+  <header class="header">
+    <div class="addtask" style="border-radius: 10px">
+      <app-searchtodo
+        class="ser"
+        (sendToContainer)="search($event)"
+        (sendToContainer1)="filter($event)"
+        (sendToContainer2)="completionStatus($event)"
+      ></app-searchtodo>
+    </div>
+    <div class="bootstrap-wrapper">
+      <div class="container-fluid">
+        <!-- <h1 class="mt2">Available Task</h1> -->
+        <h1 *ngIf="!showMessage">Today Task</h1>
+        <h1 *ngIf="showMessage">Add Today Task</h1>
+        <div class="row mt2">
+          <div
+            class="col-md-4"
+            *ngFor="
+              let card of allToDo
+                | paginate : { itemsPerPage: 8, currentPage: p }
+            "
+          >
+            <mat-card class="mt2">
+              <mat-card-header>
+                <mat-card-subtitle class="subtitle">
+                  {{ card.title }}
+                </mat-card-subtitle>
+                <mat-card-title class="title" *ngIf="!card.completed">
+                  Created On :- {{ card.createdDateTime }} | Priority :-
+                  {{ card.priority }} <br />
+
+                  Due Date :-{{ card.dueDate }} | Status :- Pending
+                </mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <div>
+                <mat-card-content>
+                  <p class="truncate">{{ card.description }}</p>
+                </mat-card-content>
+              </div>
+
+              <mat-divider></mat-divider>
+
+              <mat-card-actions class="button">
+                <button
+                  mat-button
+                  matTooltip="Important"
+                  class="menu-button"
+                  (click)="updateToDoAsImportantTask(card)"
+                  color="accent"
+                >
+                  <mat-icon style="color: rgb(249, 251, 251)"
+                    >add_task</mat-icon
+                  >
+                </button>
+                <button
+                  mat-button
+                  matTooltip="Edit"
+                  class="menu-button"
+                  color="primary"
+                  routerLink="/updateToDo/{{ card.title }}"
+                >
+                  <mat-icon style="color: rgb(249, 251, 251)">edit</mat-icon>
+                </button>
+                <button
+                  mat-button
+                  matTooltip="Task Done"
+                  class="menu-button"
+                  color="warn"
+                  (click)="updateTaskAsCompletedTask(card)"
+                >
+                  <mat-icon style="color: rgb(249, 251, 251)"
+                    >done_all</mat-icon
+                  >
+                </button>
+                <button
+                  mat-button
+                  matTooltip="Delete"
+                  class="menu-button"
+                  color="warn"
+                  (click)="deleteTaskById(card.title)"
+                >
+                  <mat-icon style="color: rgb(249, 251, 251)">delete</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <footer>
+    <div class="clearfix">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </footer>
+</mat-drawer-container>

@@ -1,0 +1,178 @@
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ToDo } from '../model/todo';
+import { TodoService } from '../services/todo.service';
+import { LoginService } from '../services/login.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
+
+@Component({
+  selector: 'app-view-archive-todo',
+  templateUrl: './view-archive-todo.component.html',
+  styleUrls: ['./view-archive-todo.component.css'],
+})
+export class ViewArchiveTodoComponent implements OnInit {
+  allToDO: ToDo[] = [];
+  p: any;
+  selected = '';
+  constructor(
+    private toDoService: TodoService,
+    private userService: LoginService,
+    private router: Router,
+    private ar: ActivatedRoute,
+    private toast: NgToastService
+  ) {}
+
+  ngOnInit(): void {
+    this.getAllToDoByArchiveStatus(true);
+  }
+
+  isOpen = false;
+  animateButton() {
+    let elem = <HTMLInputElement>document.getElementById('sidebar_sidenav');
+    elem.setAttribute('visibility', 'visible');
+    if (this.isOpen) this.isOpen = false;
+    else this.isOpen = true;
+  }
+
+  @Output()
+  sendToContainer1: EventEmitter<any> = new EventEmitter();
+  searchinput1() {
+    this.sendToContainer1.emit(this.selected);
+  }
+  home() {
+    this.router.navigateByUrl('/home/header');
+  }
+
+  important() {
+    this.router.navigateByUrl('/home/viewimportant');
+  }
+  archive() {
+    this.router.navigateByUrl('/home/viewarchive');
+  }
+  complete() {
+    this.router.navigateByUrl('/home/viewcompleted');
+  }
+
+  Personal() {
+    this.router.navigateByUrl('/home/Personal');
+  }
+
+  Travel() {
+    this.router.navigateByUrl('/home/Travel');
+  }
+
+  getAllToDoByArchiveStatus(archive: boolean) {
+    this.toDoService.getAllToDoByArchiveStatus(archive).subscribe((data) => {
+      this.allToDO = data;
+    });
+  }
+
+  updateTaskArchiveStatus(card: any) {
+    this.toDoService.updateTaskArchiveStatus(card).subscribe({
+      next: () => {
+        this.getAllToDoByArchiveStatus(true);
+        this.toast.success({
+          detail: 'Archive ToDo Is Remove',
+          summary: 'Remove',
+          duration: 4000,
+        });
+      },
+      error: (err) => {
+        this.toast.success({
+          detail: 'due to the network issues',
+          summary: 'Error',
+          duration: 4000,
+        });
+      },
+    });
+  }
+
+  updateTaskAsCompletedTask(card: any) {
+    this.toDoService.updateTaskAsCompletedTask(card).subscribe({
+      next: () => {
+        this.toast.success({
+          detail: 'Completed ToDo Is Added',
+          summary: 'Added',
+          duration: 4000,
+        });
+      },
+      error: (err) => {
+        this.toast.success({
+          detail: 'due to the network issues',
+          summary: 'Error',
+          duration: 4000,
+        });
+      },
+    });
+  }
+
+  updateToDoAsImportantTask(card: any) {
+    this.toDoService.updateToDoAsImportantTask(card).subscribe({
+      next: () => {
+        this.toast.success({
+          detail: 'Important ToDo Is Added',
+          summary: 'Added',
+          duration: 4000,
+        });
+      },
+      error: (err) => {
+        this.toast.success({
+          detail: 'due to the network issues',
+          summary: 'Error',
+          duration: 4000,
+        });
+      },
+    });
+  }
+
+  deleteTaskById(title: any) {
+    this.toDoService.deleteToDoByTitle(title).subscribe({
+      next: (data) => {
+        this.getAllToDoByArchiveStatus(true);
+        this.toast.success({
+          detail: 'ToDo Deleted successfully',
+          summary: 'DELETED',
+          duration: 4000,
+        });
+        this.allToDO;
+      },
+      error: (err) =>
+        this.toast.error({
+          detail: 'Due to the network issue toDo is not deleted',
+          summary: 'ERROR',
+          duration: 4000,
+        }),
+    });
+  }
+
+  search(title: string) {
+    if (title === '' || !title) {
+      this.getAllToDo();
+    } else {
+      this.allToDO = this.allToDO;
+      this.allToDO = this.allToDO.filter(
+        (data) =>
+          data.title?.toLocaleLowerCase().includes(title) ||
+          data.description?.toLocaleLowerCase().includes(title)
+      );
+    }
+  }
+
+  filter(priority: string) {
+    if (priority == '') {
+      this.getAllToDo();
+    } else {
+      this.toDoService
+        .getAllListByPriority(priority)
+        .subscribe((data) => (this.allToDO = data));
+    }
+  }
+
+  getAllToDo() {
+    this.toDoService.getAllToDo().subscribe((data) => {
+      this.allToDO = data;
+      console.log('get all todolist');
+      console.table(this.allToDO);
+    });
+  }
+}

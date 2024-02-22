@@ -1,0 +1,315 @@
+<!-- side bar started -->
+<mat-drawer-container class="sidebar-container" id="main-image" autosize>
+  <mat-drawer #drawer class="sidebar-sidenav" id="sidebar_sidenav" mode="side">
+    <p class="whiteText">MENU</p>
+    <div style="padding: 10px">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="sideNavMenu">
+      <a routerLink="/home/header"></a>
+      <button mat-button class="customMenuBtn" (click)="home()">🏠Home</button>
+      <button mat-button class="customMenuBtn" (click)="complete()">
+        ✅Completed
+      </button>
+      <button mat-button class="customMenuBtn" (click)="important()">
+        🔖Important
+      </button>
+      <button mat-button class="customMenuBtn" (click)="archive()">
+        📥Archive
+      </button>
+      <button mat-button class="customMenuBtn" (click)="Personal()">
+        💻Personal
+      </button>
+      <button mat-button class="customMenuBtn" (click)="Travel()">
+        🧳Travel
+      </button>
+      <mat-divider></mat-divider>
+
+  
+
+      <button mat-button class="customMenuBtn" (click)="openDialog()">
+        <span class="material-symbols-outlined" style="color: rgb(26, 88, 118)">
+          add_task
+        </span>
+        CustomCategory
+      </button>
+      <button mat-button class="customMenuBtn" (click)="category()">
+        <span class="material-symbols-outlined" style="color: rgb(26, 88, 118)">
+          category
+        </span>
+        View-Category
+      </button>
+
+ 
+    </div>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <div>
+      <div type="button" mat-button (click)="drawer.toggle(); animateButton()">
+        <div
+          class="hamburger"
+          id="hamburger-1"
+          [ngClass]="isOpen ? 'is-active' : ''"
+        >
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content bar started -->
+    <header class="header">
+      <div class="addtask" style="border-radius: 10px">
+        <app-searchtodo
+          class="ser"
+          (sendToContainer)="search($event)"
+          (sendToContainer1)="filter($event)"
+          (sendToContainer2)="completionStatus($event)"
+        ></app-searchtodo>
+      </div>
+      <div class="bootstrap-wrapper">
+        <div class="container-fluid">
+          <h1 *ngIf="!showMessage">Available Task</h1>
+          <h1 *ngIf="showMessage">Please Add Your Task</h1>
+          <div class="row mt2">
+            <div
+              class="col-md-4"
+              *ngFor="
+                let card of allToDO
+                  | paginate : { itemsPerPage: 8, currentPage: p }
+              "
+            >
+              <!-- mat-car-start -->
+              <mat-card style="margin: 0px 0px 15px 0px">
+                <mat-card-header>
+                  <mat-card-subtitle
+                    class="subtitle"
+                    style="margin-bottom: 20px"
+                  >
+                    <span
+                      style="
+                        color: #fff;
+                        font-family: var(
+                          --mdc-typography-headline6-font-family,
+                          var(--mdc-typography-font-family, Roboto, sans-serif)
+                        );
+                      "
+                      >{{ card.title }}</span
+                    >
+                  </mat-card-subtitle>
+                  <mat-card-title class="title" *ngIf="!card.completed">
+                    <div style="display: flex">
+                      <div>
+                        <span>Created On :-</span>
+                      </div>
+                      <div>
+                        {{ card.createdDateTime }}
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <span>Due Date :-</span>
+                      </div>
+                      <div>
+                        <input
+                          ngClass="{{
+                            card.isEditable && card.isEditable !== null
+                              ? 'customInput'
+                              : 'readonlyInput'
+                          }}"
+                          matInput
+                          type="date"
+                          value="{{ card.dueDate }}"
+                          [(ngModel)]="card.dueDate"
+                          [readonly]="card.isEditable == false"
+                        />
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <span>Status :- Pending</span>
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <span>Priority :- {{ card.priority }} </span>
+                      </div>
+                      <div>
+                        <span *ngIf="card.isEditable == false">
+                          <!-- {{ card.priority }} -->
+                        </span>
+                        <select
+                          [(ngModel)]="card.priority"
+                          *ngIf="card.isEditable == true"
+                        >
+                          <option>high🔴</option>
+                          <option>medium🟡</option>
+                          <option>low🟢</option>
+                        </select>
+                      </div>
+                    </div>
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <div>
+                  <mat-card-content>
+                    <div>
+                      <textarea
+                        class="truncate"
+                        ngClass="{{
+                          card.isEditable
+                            ? 'customInputTextArea'
+                            : 'readonlyInputTextArea'
+                        }}"
+                        [(ngModel)]="card.description"
+                        [readonly]="card.isEditable == false"
+                        [textContent]="card.description"
+                      >
+                      </textarea>
+                    </div>
+                  </mat-card-content>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <mat-card-actions class="button">
+                  <button
+                    mat-button
+                    matTooltip="Important"
+                    class="menu-button"
+                    (click)="updateToDoAsImportantTask(card)"
+                    color="accent"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      style="color: rgb(249, 251, 251)"
+                    >
+                      label_important
+                    </span>
+                  </button>
+
+                  <button
+                    mat-button
+                    matTooltip="personal"
+                    class="menu-button"
+                    (click)="updateToDoAsPersonalTask(card)"
+                    color="accent"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      style="color: rgb(249, 251, 251)"
+                    >
+                      account_circle
+                    </span>
+                  </button>
+
+                  <button
+                    mat-button
+                    matTooltip="travel"
+                    class="menu-button"
+                    (click)="updateToDoAsTravelTask(card)"
+                    color="accent"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      style="color: rgb(249, 251, 251)"
+                    >
+                      luggage
+                    </span>
+                  </button>
+
+                  <button
+                    mat-button
+                    matTooltip="Edit"
+                    class="menu-button"
+                    color="primary"
+                    (click)="editTaskAsCompletedTask(card)"
+                    *ngIf="card.isEditable == false"
+                  >
+                    <!-- routerLink="/home/updateToDo/{{ card.title }}" -->
+                    <mat-icon style="color: rgb(249, 251, 251)">edit</mat-icon>
+                  </button>
+                  <button
+                    mat-button
+                    matTooltip="Save"
+                    class="menu-button"
+                    color="primary"
+                    *ngIf="card.isEditable == true"
+                    (click)="saveTaskAsCompletedTask(card)"
+                  >
+                    <mat-icon style="color: rgb(249, 251, 251)">save</mat-icon>
+                  </button>
+                  <button
+                    mat-button
+                    matTooltip="Cancel"
+                    class="menu-button"
+                    color="primary"
+                    *ngIf="card.isEditable == true"
+                    (click)="cancelTaskAsCompletedTask()"
+                  >
+                    <mat-icon style="color: rgb(249, 251, 251)"
+                      >cancel</mat-icon
+                    >
+                  </button>
+                  <button
+                    mat-button
+                    matTooltip="Task Done"
+                    class="menu-button"
+                    color="warn"
+                    (click)="updateTaskAsCompletedTask(card)"
+                  >
+                    <mat-icon style="color: rgb(249, 251, 251)"
+                      >done_all</mat-icon
+                    >
+                  </button>
+
+                  <button
+                    mat-button
+                    matTooltip="Delete"
+                    class="menu-button"
+                    color="warn"
+                    (click)="deleteTaskById(card.title)"
+                  >
+                    <mat-icon style="color: rgb(249, 251, 251)"
+                      >delete</mat-icon
+                    >
+                  </button>
+ 
+                </mat-card-actions>
+
+                <mat-form-field class="mat-form-field">
+                  <mat-label class="mat-label">Select Category</mat-label>
+                  <mat-select
+                    class="mat-select"
+                    [(ngModel)]="selectedItem"
+                    (ngModelChange)="onDropdownChange()"
+                  >
+                    <mat-option
+                      class="mat-option"
+                      style="background-color: rgba(214, 145, 15, 0.995)"
+                      *ngFor="let item of userDetails.categories"
+                      [value]="item.title"
+                    >
+                      {{ item.title }}
+                    </mat-option>
+                  </mat-select>
+                  <button class="submit" mat-button (click)="getToDo(card)">submit</button>
+                </mat-form-field>
+              </mat-card>
+            
+              <!-- mat-cat-end -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <footer>
+      <div class="clearfix">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </footer>
+    <!-- side bar Ended -->
+  </div>
+</mat-drawer-container>

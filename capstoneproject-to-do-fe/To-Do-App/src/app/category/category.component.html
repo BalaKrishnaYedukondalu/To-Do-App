@@ -1,0 +1,22 @@
+<div class="container">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <h1>Add Custom Category</h1>
+
+    <div class="form-group">
+      <label for="categoryTitle">Category Title:</label>
+      <input
+        type="text"
+        id="categoryTitle"
+        formControlName="title"
+        name="title"
+        class="form-control"
+        required
+        placeholder="title.."
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Category</button>
+  </form>
+  <div *ngFor="let category of categories">
+    {{ category.title }}
+  </div>
+</div>

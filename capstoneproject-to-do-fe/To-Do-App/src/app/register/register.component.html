@@ -1,0 +1,187 @@
+<div class="formbg">
+  <div class="info">
+    <a>
+      <img
+        id="appicon"
+        src="../../assets/images/robot-to-do.png"
+        alt=" no img."
+    /></a>
+    <a routerLink="/login">
+      <h1>Task Navigator</h1>
+    </a>
+  </div>
+  <form
+    [formGroup]="registerForm"
+    novalidate
+    (ngSubmit)="onSubmit()"
+    id="formm"
+  >
+    <mat-card class="shipping-card">
+      <mat-card-content style="display: flex">
+        <!-- <img
+          class="singup"
+          src="../../assets/images/register-here-image.webp"
+          alt="not found"
+        /> -->
+        <div class="col">
+          <mat-card-header style="margin-left: -130px">
+            <mat-card-title class="title">Register</mat-card-title>
+          </mat-card-header>
+          <div style="display: block">
+            <mat-form-field class="full-width">
+              <mat-icon matPrefix class="my-icon">account_circle</mat-icon>
+              <input
+                matInput
+                placeholder="Enter First Name"
+                formControlName="firstName"
+              />
+              <mat-error
+                *ngIf="registerForm.controls['firstName'].hasError('required')"
+              >
+                <strong> First Name is Required</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.controls['firstName'].hasError('minlength')"
+              >
+                <strong> Min. Length should be 4</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.controls['firstName'].hasError('pattern')"
+              >
+                <strong> you must only enter character</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-icon matPrefix class="my-icon">person_pin</mat-icon>
+              <input
+                matInput
+                placeholder="Enter Last Name"
+                formControlName="lastName"
+              />
+              <mat-error
+                *ngIf="registerForm.controls['lastName'].hasError('required')"
+              >
+                <strong> Last Name is Required</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.controls['lastName'].hasError('minlength')"
+              >
+                <strong> Min. Length should be 4</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.controls['lastName'].hasError('pattern')"
+              >
+                <strong> you must only enter character</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-icon matPrefix class="my-icon">phone</mat-icon>
+              <input
+                matInput
+                placeholder="Phone Number"
+                formControlName="phoneNumber"
+              />
+              <mat-error
+                *ngIf="
+                  registerForm.controls['phoneNumber'].hasError('required')
+                "
+              >
+                <strong> Phone Number is Required</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  registerForm.controls['phoneNumber'].hasError('minlength')
+                "
+              >
+                <strong> Min. Length should be 10</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.controls['phoneNumber'].hasError('pattern')"
+              >
+                <strong> Number must Start with 7,8,9 </strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-icon matPrefix class="my-icon">email</mat-icon>
+              <input
+                matInput
+                placeholder="Enter Email Id"
+                formControlName="emailId"
+              />
+              <mat-error
+                *ngIf="registerForm.controls['emailId'].hasError('required')"
+              >
+                <strong> Email Id is Required</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.controls['emailId'].hasError('pattern')"
+              >
+                <strong> Please Enter Valid Mail ID</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-icon matPrefix class="my-icon">password</mat-icon>
+              <input
+                matInput
+                placeholder="Enter Password"
+                type="password"
+                formControlName="password"
+              />
+              <mat-error
+                *ngIf="registerForm.controls['password'].hasError('required')"
+              >
+                <strong> Password is required</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="registerForm.controls['password'].hasError('pattern')"
+              >
+                <strong>
+                  Password length should be 8 and have special symbol</strong
+                >
+              </mat-error>
+            </mat-form-field>
+            <br /><br />
+            <div class="full-width">
+              <!-- <mat-icon matPrefix  class="my-icon">image</mat-icon> -->
+              <mat-label>Add Profile Img : -</mat-label>
+
+              <input
+                id="input"
+                (change)="onFileSelected($event)"
+                type="file"
+                formControlName="profileImg"
+                name="profileImg"
+                class="text1"
+              />
+              <p style="margin-left: 0px; color: white" class="text1">
+                Image size should be less than 100kb
+              </p>
+            </div>
+          </div>
+          <div>
+            <button
+              mat-raised-button
+              class="button"
+              type="submit"
+              [disabled]="registerForm.invalid"
+            >
+              Register
+            </button>
+            <button
+              mat-raised-button
+              class="resetbtn"
+              type="button"
+              (click)="reset()"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>
